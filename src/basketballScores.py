@@ -11,9 +11,6 @@ from twitter import send_tweet
 
 
 
-
-
-
 def get_Bucks_game(data):
     games = data.json()
     gamesTonight = games['api']['results']

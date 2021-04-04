@@ -24,12 +24,26 @@ def twitter_authentication():
   auth.set_access_token(params['accToken'], params['accSecret'])
   return tweepy.API(auth)
 
+
+
+
+
 def send_tweet(bucksGame):
   api = twitter_authentication()
-  print(bucksGame)
-  #api.update_status(status)
-
-  
+  tweet = ''
+  if(bucksGame['hTeam'] == ''):
+    tweet = 'The Buxks were not in action today'
+  elif bucksGame['hTeam'] == 'Bucks':
+    if bucksGame['hScore'] > bucksGame['vScore'] and bucksGame['status'] == 'Finished':
+      tweet = 'The Bucks came away with a nice win home against ' + bucksGame['vTeam'] + 'with a score of '+bucksGame['hScore']+' to ' +bucksGame['vScore'] + ' #FearTheDeer'
+    elif bucksGame['hScore'] < bucksGame['vScore'] and bucksGame['status'] == 'Finished':
+      tweet = 'The Bucks had a dissapointing loss home against ' + bucksGame['vTeam'] + 'with a score of '+bucksGame['hScore']+' to ' +bucksGame['vScore'] + ' #FearTheDeer'
+  else:
+    if bucksGame['vScore'] > bucksGame['hScore'] and bucksGame['status'] == 'Finished':
+      tweet = 'The Bucks came away with a nice win away against ' + bucksGame['hTeam'] + 'with a score of '+bucksGame['vScore']+' to ' +bucksGame['hScore'] + ' #FearTheDeer'
+    elif bucksGame['hScore'] < bucksGame['vScore'] and bucksGame['status'] == 'Finished':
+      tweet = 'The Bucks had a dissapointing loss away against ' + bucksGame['hTeam'] + 'with a score of '+bucksGame['vScore']+' to ' +bucksGame['hScore'] + ' #FearTheDeer'
+  print(tweet)
 
 
 	
