@@ -24,14 +24,13 @@ def twitter_authentication():
   auth.set_access_token(params['accToken'], params['accSecret'])
   return tweepy.API(auth)
 
-def main():
+def send_tweet(bucksGame):
   api = twitter_authentication()
-  status = "Hello World. #FearTheDeer"
-  api.update_status(status)
+  print(bucksGame)
+  #api.update_status(status)
 
   
 
-if __name__ == "__main__":
-    main()
+
 	
 
