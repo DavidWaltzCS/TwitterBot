@@ -43,7 +43,7 @@ def send_tweet(bucksGame):
       tweet = 'The Bucks came away with a nice win away against ' + bucksGame['hTeam'] + ' with a score of '+bucksGame['vScore']+' to ' +bucksGame['hScore'] + ' #FearTheDeer'
     elif bucksGame['hScore'] < bucksGame['vScore'] and bucksGame['status'] == 'Finished':
       tweet = 'The Bucks had a dissapointing loss away against ' + bucksGame['hTeam'] + ' with a score of '+bucksGame['vScore']+' to ' +bucksGame['hScore'] + ' #FearTheDeer'
-  print(tweet)
+  #api.update_status(tweet)
 
 
 	
