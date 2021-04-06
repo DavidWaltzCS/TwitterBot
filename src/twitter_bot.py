@@ -11,17 +11,13 @@ from live_bucks_tweeting import check_mentions
 def main():
     since_id = 1
     while True:
-        timeOfDay =  str(datetime.now())
-        print(timeOfDay)
-        timeOfDay = timeOfDay[11:16:1]      
-        if timeOfDay == '23:00' and run == 0:
-            games = get_games()
-            bucksGame = get_Bucks_game(games)
+        timeOfDay =  str(datetime.now())[11:16:1]     
+        if timeOfDay == '23:00':
+            bucksGame = get_Bucks_game()
             send_tweet(bucksGame)
-            run = 1
             time.sleep(45)
         since_id = check_mentions(since_id) 
-        time.sleep(15)
+        time.sleep(2)
    
 if __name__ == "__main__":
     main()

@@ -11,10 +11,11 @@ from twitter import send_tweet
 
 
 
-def get_Bucks_game(data):
-    games = data.json()
+def get_Bucks_game():
+    games = get_games()
+    games = games.json()
     gamesTonight = games['api']['results']
-    gameData = {'hTeam': '','vTeam': '','hScore': '', 'vScore':'', 'status': '','arena': ''}
+    gameData = {'hTeam': '','vTeam': '','hScore': '', 'vScore':'', 'status': '','arena': '', 'gameId' : ''}
     for i in range(gamesTonight):
         vTeam = games['api']['games'][i]['vTeam']['nickName']
         hTeam = games['api']['games'][i]['hTeam']['nickName']
@@ -25,6 +26,7 @@ def get_Bucks_game(data):
             gameData['vScore'] = games['api']['games'][i]['vTeam']['score']['points']
             gameData['status'] = games['api']['games'][i]['statusGame']
             gameData['arena'] = games['api']['games'][i]['arena']
+            gameData['gameId'] = games['api']['games'][i]['gameId']
     return gameData
             
   
@@ -47,13 +49,3 @@ def get_games():
   response = requests.request("GET", url, headers=headers)
   return response
 
-def main():
-  games = get_games()
-  bucksGame = get_Bucks_game(games)
-  send_tweet(bucksGame)
-
-
-
-
-if __name__ == "__main__":
-    main()

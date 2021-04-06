@@ -42,8 +42,8 @@ def send_tweet(bucksGame):
       tweet = 'The Bucks had a dissapointing loss away against ' + bucksGame['hTeam'] + ' with a score of '+bucksGame['vScore']+' to ' +bucksGame['hScore'] + ' #FearTheDeer'
   else:
     tweet = "Bucks are currently playing, I will update the score when the game ends" 
-  print(tweet)
-  #api.update_status(tweet)
+ 
+  api.update_status(tweet)
 
 
 	
